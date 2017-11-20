@@ -9,7 +9,15 @@
 const PROMPT = require('readline-sync');
 
 let continueUsing, numPassengers, numZones, ticketPrice;
-let ticketFairs;
+const TICKET_FAIRS = [
+
+    [0, 0, 0, 0],
+    [7.50, 10.00, 12.00, 12.75],
+    [14.00, 18.50, 22.00, 23.00],
+    [20.00, 21.00, 32.00, 33.00],
+    [25.00, 27.50, 36.00, 37.00]
+
+];
 
 /**
  *   @method
@@ -18,7 +26,6 @@ let ticketFairs;
  */
 function main() {
 
-    setPriceArray();
     setContinueUsing();
     while(continueUsing === 1){
 
@@ -50,7 +57,7 @@ function displayPrice() {
  */
 function calcTicketPrice() {
 
-    ticketPrice = ticketFairs[numPassengers][numZones];
+    ticketPrice = TICKET_FAIRS[numPassengers][numZones];
 }
 
 /**
@@ -85,23 +92,6 @@ function setNumPassengers(){
         console.log(`\nInvalid response, please try again.`);
         return setNumPassengers();
     }
-}
-
-/**
- *   @method
- *   @desc Method that instantiates the ticketFairs array
- *   @returns (null)
- */
-function setPriceArray(){
-    ticketFairs = [
-
-        [0, 0, 0, 0],
-        [7.50, 10.00, 12.00, 12.75],
-        [14.00, 18.50, 22.00, 23.00],
-        [20.00, 21.00, 32.00, 33.00],
-        [25.00, 27.50, 36.00, 37.00]
-
-    ];
 }
 
 
